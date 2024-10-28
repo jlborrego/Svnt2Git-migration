@@ -1,0 +1,18 @@
+create repository example_module
+end repository
+
+# Branches
+match /branches/gpio_tools/example_module/candidate-((?!standalone)[^/]+)/
+  repository example_module
+  branch release/\1
+end match
+
+# Tag
+match /tags/modules/gpio_tools/example_module/release-([^/]+)/
+  repository example_module
+  branch refs/tags/\1
+end match
+
+# Ignore other branches
+match /*/
+end match
